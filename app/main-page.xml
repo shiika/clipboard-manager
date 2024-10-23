@@ -1,0 +1,17 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="bg-gray-100">
+    <ActionBar title="Clipboard History" />
+    
+    <GridLayout rows="auto, *">
+        <Button text="Clear History" tap="{{ clearHistory }}" class="bg-red-500 text-white p-2 m-2" row="0"/>
+        
+        <ListView items="{{ clipboardHistory }}" row="1" class="list-group">
+            <ListView.itemTemplate>
+                <GridLayout columns="*, auto" class="p-2 border-b border-gray-200">
+                    <Label text="{{ $value }}" textWrap="true" class="text-base" col="0"/>
+                    <Button text="Copy" tap="{{ $parent.copyToClipboard($value) }}" 
+                            class="bg-blue-500 text-white p-1 rounded" col="1"/>
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</Page>
